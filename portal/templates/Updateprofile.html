@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'profilecard.css' %}">
+	<title>Document</title>
+</head>
+<body>
+
+    <div class="main"
+      <br>
+      <label area-hidden="true">Edit profile</label> 
+        <div class="signup">
+       
+            <form method='post' action="{% url 'update' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="status" placeholder="status">
+                <input type="text" name="location" placeholder="location">
+                <input type='file' name='image'>
+                <button>Update profile</button>
+            </form>
+        </div> 
+        
+ 
+    </div>    
+</body>
+</html>
