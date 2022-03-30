@@ -21,9 +21,6 @@ def getdevicestatus(request,pk):
 
 
 def togglelight(request,pk):
-
-
-
         try:
             device=Device.objects.get(deviceId=pk)
 
@@ -31,9 +28,11 @@ def togglelight(request,pk):
                 device.lightstatus=1
             else:
                 device.lightstatus=0
+
+            device.save()
             dict_={"deviceId":device.deviceId,
-            "light":device.lightstatus,
-            "fan":device.fanstatus}
+                    "light":device.lightstatus,
+                    "fan":device.fanstatus}
             return JsonResponse(dict_)
         except Device.DoesNotExist:
 
@@ -41,8 +40,6 @@ def togglelight(request,pk):
 
 
 def togglefan(request,pk):
-
-
         try:
             device=Device.objects.get(deviceId=pk)
 
@@ -50,9 +47,10 @@ def togglefan(request,pk):
                 device.fanstatus=1
             else:
                 device.fanstatus=0
+            device.save()
             dict_={"deviceId":device.deviceId,
-            "light":device.lightstatus,
-            "fan":device.fanstatus}
+                    "light":device.lightstatus,
+                    "fan":device.fanstatus}
             return JsonResponse(dict_)
         
 
